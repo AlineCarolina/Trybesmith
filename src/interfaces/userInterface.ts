@@ -13,3 +13,8 @@ export interface UserToken {
   id: number,
   username: string,
 }
+
+export interface StatusCode {
+  code: number,
+  error: string,
+}
