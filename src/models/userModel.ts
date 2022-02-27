@@ -6,7 +6,7 @@ const create = async (user: UserInterface): Promise<User> => {
   const { username, classe, level, password } = user;
   const [{ insertId }] = await
   connection.execute<ResultSetHeader>(
-    'INSERT INTO Users (username, classe, level, password) VALUES (?,?,?,?);',
+    'INSERT INTO Trybesmith.Users (username, classe, level, password) VALUES (?,?,?,?);',
     [username, classe, level, password],
   );
   const createdUser: User = { id: insertId, username, classe, level, password };

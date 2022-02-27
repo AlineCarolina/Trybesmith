@@ -5,15 +5,17 @@ const userValidation = (username: string) => {
 };
 
 const classValidation = (classe: string) => {
-  if (!classe) return { code: 400, error: 'classe is required' };
+  if (!classe) return { code: 400, error: 'Classe is required' };
   if (typeof classe !== 'string') return { code: 422, error: 'Classe must be a string' };
   if (classe.length < 3) return { code: 422, error: 'Classe must be longer than 2 characters' };
 };
 
 const levelValidation = (level: number) => {
-  if (!level) return { code: 400, error: 'Level is required' };
-  if (typeof level !== 'number') return { code: 422, error: 'Level must be a number' };
-  if (level <= 0) return { code: 422, error: 'Level must be greater than 0' };
+  if (level === undefined) return { code: 400, error: 'Level is required' };
+  if (typeof level !== typeof 0) return { code: 422, error: 'Level must be a number' };
+  if (level <= 0) { 
+    return { code: 422, error: 'Level must be greater than 0' };
+  }
 };
 
 const passwordValidation = (password: string) => {
