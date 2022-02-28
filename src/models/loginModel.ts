@@ -1,4 +1,4 @@
-import { Login } from '../interfaces/userInterface';
+import { Login, UserId } from '../interfaces/userInterface';
 import connection from './connection';
 
 const login = async (loginData: Login): Promise<[]> => {
@@ -10,6 +10,18 @@ const login = async (loginData: Login): Promise<[]> => {
   return user as [];
 };
 
+const getBy = async (username:string, password:string) => {
+  const [userId] = await connection.execute(
+    'SELECT id FROM Trybesmith.Users WHERE username=? AND password=?',
+    [username, password],
+  );
+
+  const [id] = userId as UserId[];
+
+  return id; 
+};
+
 export default {
   login,
+  getBy,
 };
