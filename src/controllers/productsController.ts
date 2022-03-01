@@ -19,6 +19,15 @@ const create = async (req: Request, res: Response, next: NextFunction) => {
   next();
 };
 
+const getAll = async (_req: Request, res: Response, next: NextFunction) => { 
+  const result = await productsService.getAll();
+
+  res.status(200).json(result);
+
+  next();
+};
+
 export default {
   create,
+  getAll,
 };

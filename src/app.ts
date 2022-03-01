@@ -13,5 +13,6 @@ app.use(express.json());
 app.post('/users', userController.create);
 app.post('/login', loginController.login);
 app.post('/products', tokenValidation, productsController.create);
+app.get('/products', tokenValidation, productsController.getAll);
 
 export default app;

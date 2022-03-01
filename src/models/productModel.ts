@@ -12,6 +12,13 @@ const create = async (productData:ProductInput):Promise<ProductOutput> => {
   return { id: product.insertId, name, amount };
 };
 
+const getAll = async () => {
+  const [product] = await connection.execute<ResultSetHeader>('SELECT * FROM Trybesmith.Products');
+
+  return product;
+};
+
 export default {
   create,
+  getAll,
 };
