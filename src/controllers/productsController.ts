@@ -12,9 +12,9 @@ const create = async (req: Request, res: Response, next: NextFunction) => {
     return res.status(code).json({ error });
   }
 
-  const product = await productsService.create({ name, amount });
+  const item = await productsService.create({ name, amount });
 
-  res.status(201).json({ product });
+  res.status(201).json({ item });
 
   next();
 };
